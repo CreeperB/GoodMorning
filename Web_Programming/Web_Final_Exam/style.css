@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f2f2f2;
+    color: #333333;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 200px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+#deleteAllButton {
+    background-color: red;
+}
+
+.delete-button {
+    background-color: red;
+}
+
+button {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+ul {
+    margin-top: 20px;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+li span {
+    flex-grow: 1;
+}
+
+li button {
+    margin-left: 10px;
+}
+
+.edit-button::before {
+    content: "\270E";
+    /* Unicode 字元編輯圖示 */
+}
+
+.delete-button::before {
+    content: "\2716";
+    /* Unicode 字元刪除圖示 */
+}
+
+#deleteAllButton {
+    margin-top: 20px;
+    display: none;
+    /* 預設隱藏刪除所有項目按鈕 */
+}

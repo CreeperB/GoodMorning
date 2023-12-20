@@ -1,0 +1,1 @@
+yolo task=detect mode=predict model=best.pt source=dice.jpeg show=true

@@ -1,0 +1,13 @@
+.DS_Store
+env
+venv
+*.dSYM
+*.run
+*.zip
+.cache
+tempCodeRunnerFile.*
+data.json
+first.json
+node_modules
+Analyze
+__pycache__

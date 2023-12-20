@@ -1,0 +1,47 @@
+.top {
+    background-color: #ffffff;
+    width: 100%;
+    height: 90px;
+    display: grid;
+    justify-content: center;
+    align-content: stretch;
+}
+
+.title{
+    width: auto;
+    height: 100%;
+}
+
+.middle {
+    display: flex;
+    justify-content: center;
+}
+
+.waiting {
+    display: flex;
+    width: 200px;
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    color: #000000;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.moo {
+    display: inline;
+    background-color: #ffffff;
+}
+
+.moo-pic{
+    width: 200px;
+    height: auto;
+}
+
+
+.refresh {
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    align-content: center;
+}

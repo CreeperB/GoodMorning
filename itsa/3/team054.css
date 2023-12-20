@@ -1,0 +1,10 @@
+/* Add your CSS styling here */
+.frame {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    width: 45%;
+    display: inline-block;
+}
+
+/* Add more styling as needed */

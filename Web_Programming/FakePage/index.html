@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>逢甲大學OAuth服務登入</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="height:100%;font-family: 'Microsoft JhengHei';color:#666">
+    <div class="dialog">
+        <table style="width:100%">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <h4 class="dialog-title">逢甲大學 NID 登入</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-bottom: 2px;">
+                        <input type="text" class="form-control" placeholder="NID">
+                    </td>
+                    <td rowspan="2" style="text-align: center; vertical-align: middle;">
+
+                        <input type="submit" value="登入" class="btn btn-default" style="width: 5em; height: 5em" onclick="rickroll()">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" class="form-control" placeholder="Password">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:5px;">
+                        <span style="color:red;font-size:medium;">&nbsp;</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:right">
+                        本系統採用NID驗證&nbsp;&nbsp;<img src="nid.gif" width="50px;"><br>
+                        <a onclick="rickroll()" target="_blank">NID authentication</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="background">
+        <div class="background-image"></div>
+    </div>
+    <script src="direct.js"></script>
+</body>
+
+</html>

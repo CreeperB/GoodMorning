@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梗語產生器</title>
+    <link rel="stylesheet" href="./css/common/all.css">
+    <link rel="stylesheet" href="./css/common/header.css">
+    <link rel="stylesheet" href="./css/common/footer.css">
+    <link rel="stylesheet" href="./css/slanggenerator.css">
+    <script src="./js/slanggenerator.js"></script>
+</head>
+
+<body>
+    <!--標頭-->
+    <header class="header">
+        <div class="logo"><a href="./index.html"><img src="./images/company_icon_black.svg"></a></div>
+        <ul>
+            <li><a href="./expertmodemanual.html"><span>Upgrade</span>升級專家模式</a></li>
+            <li><a href="./expertmode.html"><span>Expert</span>梗圖制作(專家模式)</a></li>
+            <li><a href="./juniormode.html"><span>Junior</span>梗圖制作(初階模式)</a></li>
+            <li><a href="./slanggenerator.html"><span>Slang</span>梗語產生器</a></li>
+            <li><a href="./useagreement.html"><span>Regulations</span>法律規範</a></li>
+            <li><a href="./resetpassword.html"><span>Reset password</span>密碼重置</a></li>
+            <li><a href="./loginscreen.html"><span>Log in</span>登入會員</a></li>
+        </ul>
+    </header>
+    <!--中間部份-->
+    <section class="sec1">
+        <div class="flex_container">
+            <div class="items -left" id="box">
+                <a class="move" onmousedown="move(this);" id="text"></a>
+            </div>
+            <div class="items -right">
+                <ul class="desc_list">
+                    <input type="radio" name="color" class="increase_font" onchange="blackBgWhiteWd()">黑底白字</input>
+                    <input type="radio" name="color" class="increase_font" onchange="whiteBgBlackWd()">白底黑字</input>
+                </ul>
+                <ul class="desc_list">
+                    <input type="radio" name="color" class="reduce_font" onchange="blackBgGreenWd()">黑底綠字</input>
+                    <input type="radio" name="color" class="reduce_font" onchange="redBgYellowWd()">紅底黃字</input>
+                </ul>
+                <textarea oninput="changeTextInput()" class="title1" cols="25" rows="5" id="textInput"></textarea>
+
+                <button onclick="download()" class="title1" id="download">完成下載圖片</button>
+            </div>
+        </div>
+    </section>
+
+    <!--底部-->
+    <footer class="footer">
+        <span class="text">本網站為緯育TibaMe【第87期】前端工程師專業技術養成班學員作品，僅供學習、展示之用途。</span>
+    </footer>
+</body>
+
+</html>

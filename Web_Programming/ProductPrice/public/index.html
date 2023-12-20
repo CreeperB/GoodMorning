@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Price Change Inquiry</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <h1>Product Price Change Inquiry</h1>
+    <h2>Enter the price of the product</h2>
+    <form action="/api/submit" method="POST" id="inputForm">
+        <label for="date">Date:</label>
+        <input required type="date" id="date" name="date">
+        <br><br>
+        <label for="product">&nbsp&nbsp&nbspName:</label>
+        <input required type="text" id="product" name="product">
+        <br><br>
+        <label for="price">&nbsp&nbsp&nbsp&nbspPrice:</label>
+        <input required type="number" id="price" name="price">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <h2>Search</h2>
+    <form action="/api/search" method="POST" id="searchForm">
+        <label for="search">Keyword:</label>
+        <input type="text" id="keyword" name="keyword">
+        <input type="submit" value="Search">
+    </form>
+    
+    <h3>Product Price Change</h3>
+    <table id="priceTable">
+        
+    </table>
+    <script src="javascripts/script.js"></script>
+</body>
+</html>

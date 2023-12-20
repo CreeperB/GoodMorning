@@ -1,0 +1,5 @@
+# YOLOv8
+ultralytics=8.0.112
+pygame=2.4.0
+pillow=9.5.0
+mss=9.0.1

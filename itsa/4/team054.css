@@ -1,0 +1,51 @@
+/* team054.css */
+body {
+    font-size: 24px;
+}
+
+.datepicker-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.message-bar {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.calendar {
+    width: 100% - 10px;
+    height: 100%;
+    border: 5px solid blue;
+    padding: 20px;
+    /* background-color: white; */
+}
+
+.calendar td.selected-date {
+    background-color: gray;
+    /* 設定灰色背景色 */
+}
+
+table {
+    width: 100%;
+    height: 100%;
+}
+
+table th,
+table td {
+    padding: 20px;
+    text-align: center;
+}
+
+.justify-content-space-between {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 80px;
+}

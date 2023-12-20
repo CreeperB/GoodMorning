@@ -1,0 +1,1 @@
+print("AC" if open("output.txt", "r").read() == open("ans.txt", "r").read() else "WA")

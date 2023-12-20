@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="team054.css">
+</head>
+<body>
+    <!-- Frame 1: Currency Converter -->
+    <div class="frame" id="frame1">
+        <h1>Frame 1 - Currency Converter</h1>
+        <label for="productPrice">Product Price (USD):</label>
+        <input type="number" id="productPrice" placeholder="Enter price in USD">
+        <label for="targetCurrency">Select Target Currency:</label>
+        <select id="targetCurrency">
+            <option value="usd">USD</option>
+            <option value="twd">TWD</option>
+            <option value="cny">CNY</option>
+            <!-- Add more currency options here -->
+        </select>
+        <p>Converted Price: <span id="convertedPrice">0</span></p>
+    </div>
+
+    <!-- Frame 2: Currency Rates -->
+    <div class="frame" id="frame2">
+        <h1>Frame 2 - Currency Rates</h1>
+        <div id="currencyRates">
+            <!-- Exchange rates will be displayed here -->
+        </div>
+    </div>
+
+    <script src="team054.js"></script>
+</body>
+</html>
