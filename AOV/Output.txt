@@ -1,7 +1,0 @@
-4
-x2 A C z1
-x2 A C D z2
-x3 A C z1
-x3 A C D z2
-x3 B D z2
-x4 B D z2

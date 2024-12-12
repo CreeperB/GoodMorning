@@ -1,0 +1,181 @@
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA.
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M7 DBCS3170)
+      Licensed to TAMKANG UNIVERSITY, Site 12001760.
+NOTE: This session is executing on the X64_10PRO  platform.
+
+
+
+NOTE: Analytical products:
+
+      SAS/STAT 15.2
+      SAS/ETS 15.2
+      SAS/OR 15.2
+      SAS/IML 15.2
+      SAS/QC 15.2
+
+NOTE: Additional host information:
+
+ X64_10PRO WIN 10.0.17763  Workstation
+
+NOTE: SAS initialization used:
+      real time           2.42 seconds
+      cpu time            2.06 seconds
+
+1    proc import datafile="C:\Users\409667184\Desktop\F18.xlsx" out=Fuel2018 dbms=xlsx replace;
+2    run;
+
+NOTE: One or more variables were converted because the data type is not supported by the V9 engine. For more details, run with
+      options MSGLEVEL=I.
+NOTE: The import data set has 48 observations and 6 variables.
+NOTE: WORK.FUEL2018 data set was successfully created.
+NOTE: PROCEDURE IMPORT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+
+
+3
+4    proc import datafile="C:\Users\409667184\Desktop\F19.xlsx" out=Fuel2019 dbms=xlsx replace;
+5    run;
+
+NOTE: One or more variables were converted because the data type is not supported by the V9 engine. For more details, run with
+      options MSGLEVEL=I.
+NOTE: The import data set has 52 observations and 6 variables.
+NOTE: WORK.FUEL2019 data set was successfully created.
+NOTE: PROCEDURE IMPORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+
+
+6
+7    proc import datafile="C:\Users\409667184\Desktop\L18.xlsx" out=Labor2018 dbms=xlsx replace;
+8    run;
+
+NOTE: One or more variables were converted because the data type is not supported by the V9 engine. For more details, run with
+      options MSGLEVEL=I.
+NOTE: The import data set has 48 observations and 6 variables.
+NOTE: WORK.LABOR2018 data set was successfully created.
+NOTE: PROCEDURE IMPORT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+
+
+9
+10   proc import datafile="C:\Users\409667184\Desktop\L19.xlsx" out=Labor2019 dbms=xlsx replace;
+11   run;
+
+NOTE: One or more variables were converted because the data type is not supported by the V9 engine. For more details, run with
+      options MSGLEVEL=I.
+NOTE: The import data set has 52 observations and 6 variables.
+NOTE: WORK.LABOR2019 data set was successfully created.
+NOTE: PROCEDURE IMPORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+
+
+12
+13   /* Merge fuel and labor data for 2018 */
+14   data combined2018;
+15       merge Fuel2018(in=a) Labor2018(in=b);
+16       by carrier CARRIER_NAME year quarter;
+17       if a & b; /* Keep only observations present in both datasets */
+18   run;
+
+NOTE: There were 48 observations read from the data set WORK.FUEL2018.
+NOTE: There were 48 observations read from the data set WORK.LABOR2018.
+NOTE: The data set WORK.COMBINED2018 has 48 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+
+
+19
+20   /* Merge fuel and labor data for 2019 */
+21   data combined2019;
+22       merge Fuel2019(in=a) Labor2019(in=b);
+23       by carrier CARRIER_NAME year quarter;
+24       if a & b; /* Keep only observations present in both datasets */
+25   run;
+
+NOTE: There were 52 observations read from the data set WORK.FUEL2019.
+NOTE: There were 52 observations read from the data set WORK.LABOR2019.
+NOTE: The data set WORK.COMBINED2019 has 52 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+
+
+26
+27   /* Combine all years */
+28   data airlines_combined;
+29       set combined2018 combined2019;
+30   run;
+
+NOTE: There were 48 observations read from the data set WORK.COMBINED2018.
+NOTE: There were 52 observations read from the data set WORK.COMBINED2019.
+NOTE: The data set WORK.AIRLINES_COMBINED has 100 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+
+
+31
+32   data airlines_combined;
+33       set airlines_combined;
+34       PL = Salaries000 * 1000 / Employee;
+35       PF = Fuel_Cost / Fuel_Gallons;
+36       label PL = "Price for labor"
+37             PF = "Price for fuel";
+38   run;
+
+NOTE: There were 100 observations read from the data set WORK.AIRLINES_COMBINED.
+NOTE: The data set WORK.AIRLINES_COMBINED has 100 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+
+
+39
+40   proc summary data=airlines_combined nway;
+41       class carrier;
+42       var PL PF;
+43       output out=Sumout (drop=_type_ _freq_)
+44           mean=Mean_PL Mean_PF
+45           std=StdDev_PL StdDev_PF;
+46   run;
+
+NOTE: There were 100 observations read from the data set WORK.AIRLINES_COMBINED.
+NOTE: The data set WORK.SUMOUT has 13 observations and 5 variables.
+NOTE: PROCEDURE SUMMARY used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+
+
+47
+48   proc datasets lib=work;
+NOTE: Writing HTML Body file: sashtml.htm
+49       modify Sumout;
+50       label Mean_PL = "Mean PL"
+51             Mean_PF = "Mean PF"
+52             StdDev_PL = "StdDev_PL"
+53             StdDev_PF = "StdDev_PF";
+54   quit;
+
+NOTE: MODIFY was successful for WORK.SUMOUT.DATA.
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.61 seconds
+      cpu time            0.43 seconds
+
+
+55
+56
+57   proc rank data=Sumout out=Final ties=low;
+58       var Mean_PL Mean_PF;
+59       ranks rank_PL rank_PF;
+60   run;
+
+NOTE: The data set WORK.FINAL has 13 observations and 7 variables.
+NOTE: PROCEDURE RANK used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+
+

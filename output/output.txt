@@ -1,0 +1,40 @@
+NumVertices: 19
+A 0 3
+B 1 2
+C 2 4
+D 2 0
+E 3 2
+F 4 5
+G 5 3
+H 5 1
+I 6 4
+J 7 2
+S1 3 1
+S2 3 2
+S3 2 2
+S4 2 3
+S5 4 4
+S6 2 5
+S7 3 5
+S8 3 6
+S9 3 7
+Numedges: 18
+E1 A B
+E2 S4 C
+E3 S3 D
+E4 S3 E
+E5 S7 F
+E6 S5 G
+E7 S1 H
+E8 S5 I
+E9 G J
+E10 E S1
+E11 E S2
+E12 B S3
+E13 S3 S4
+E14 F S5
+E15 C S6
+E16 S6 S7
+E17 S7 S8
+E18 S8 S9
+Wirelength: 24

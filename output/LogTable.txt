@@ -1,5 +1,0 @@
-insert 14
-search 7 4
-buy 7 5
-node_num 12
-height 4
